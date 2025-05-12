@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday Aisha (Mickey)</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #333;
+      background: #f2f2f2;
+      overflow-x: hidden;
+    }
+
+    nav {
+      position: fixed;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.9);
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      padding: 15px;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    nav a {
+      color: #ff1493;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 16px;
+      transition: all 0.3s ease;
+      padding: 5px 10px;
+      border-radius: 20px;
+    }
+
+    nav a:hover {
+      background: #ff1493;
+      color: white;
+    }
+
+    section {
+      min-height: 100vh;
+      padding: 100px 20px 60px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 20px;
+      color: #ff1493;
+    }
+
+    p {
+      font-size: 1.2em;
+      max-width: 700px;
+      margin: 20px auto;
+      line-height: 1.6;
+    }
+
+    .popup-text {
+      animation: popUp 2s ease-out;
+    }
+
+    @keyframes popUp {
+      0% { transform: scale(0.5); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    /* PHOTOS SECTION */
+    .photo-section {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      margin-top: 40px;
+      width: 100%;
+      max-width: 900px;
+    }
+
+    .photo-box {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-around;
+      padding: 20px;
+      border-bottom: 2px solid #ccc;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .photo-box:nth-child(even) {
+      flex-direction: row-reverse;
+    }
+
+    .photo-box img {
+      width: 180px;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .photo-box img:hover {
+      transform: scale(1.05);
+    }
+
+    .photo-text {
+      font-style: italic;
+      font-size: 1.1em;
+      max-width: 300px;
+      padding: 15px;
+      color: #555;
+    }
+
+    .wish {
+      background: #fff;
+      margin: 20px auto;
+      padding: 25px;
+      max-width: 600px;
+      border-radius: 10px;
+      border-left: 5px solid #ff66b2;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      animation: fadeInUp 1s ease-in-out;
+      position: relative;
+    }
+
+    .wish::before {
+      content: '"';
+      font-size: 4em;
+      color: #ff66b2;
+      opacity: 0.2;
+      position: absolute;
+      top: 10px;
+      left: 10px;
+    }
+
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .final {
+      font-size: 3em;
+      font-weight: bold;
+      color: #ff1493;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+      animation: bounce 1s infinite alternate;
+    }
+
+    @keyframes bounce {
+      from { transform: translateY(0); }
+      to { transform: translateY(-10px); }
+    }
+
+    .cartoon {
+      margin-top: 20px;
+      width: 250px;
+      animation: slideIn 2s ease-out;
+      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+    }
+
+    @keyframes slideIn {
+      from { transform: translateX(-100%); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+
+    #home { 
+      background: linear-gradient(135deg, #f9f9f9 0%, #ffe6f2 100%);
+    }
+    #photos { 
+      background: linear-gradient(135deg, #f2f2f2 0%, #e6f9ff 100%);
+    }
+    #wishes { 
+      background: linear-gradient(135deg, #f9f9f9 0%, #f2ffe6 100%);
+    }
+    #mickey { 
+      background: linear-gradient(135deg, #f2f2f2 0%, #fff0e6 100%);
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: rgba(0,0,0,0.05);
+      color: #444;
+      font-size: 0.9em;
+    }
+
+    /* Audio Player Styles */
+    .audio-player {
+      margin: 30px auto;
+      background: white;
+      padding: 15px;
+      border-radius: 50px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      max-width: 300px;
+    }
+
+    /* Mickey Mouse Theme Elements */
+    .mickey-ears {
+      position: relative;
+      width: 120px;
+      height: 120px;
+      margin: 0 auto 20px;
+    }
+    
+    .ear {
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      background: #000;
+      border-radius: 50%;
+    }
+    
+    .ear.left {
+      left: 0;
+      top: 0;
+    }
+    
+    .ear.right {
+      right: 0;
+      top: 0;
+    }
+    
+    .mickey-head {
+      position: absolute;
+      width: 80px;
+      height: 80px;
+      background: #000;
+      border-radius: 50%;
+      top: 40px;
+      left: 20px;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .photo-box {
+        flex-direction: column !important;
+      }
+      
+      .photo-text {
+        margin-top: 15px;
+      }
+      
+      h1 {
+        font-size: 2em;
+      }
+      
+      nav {
+        gap: 15px;
+        padding: 10px;
+      }
+
+    }
+    .rounded {
+    border-radius: 2.25rem !important;
+}
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#photos">Photos</a>
+    <a href="#wishes">Wishes</a>
+    <a href="#mickey">Mickey</a>
+  </nav>
+
+  <!-- HOME SECTION -->
+  <section id="home">
+    <div class="mickey-ears">
+      <div class="ear left"></div>
+      <div class="ear right"></div>
+      <div class="mickey-head"></div>
+    </div>
+    <h1 class="popup-text">🎉 Happy Birthday mickey ji 🎂</h1>
+    <p class="popup-text">Nancy ... Nice name par ye ek naam nhi hai ...
+Iski mtlb hai kripaa, daya, shistata aur sundarta ka pratibimb"hona .... Nancy tu wo ladki hai .... Jisko hum ache se jnte hai ....
+Chizo ko express n krpana and all sb jnta hu .... But mei ye 
+Bhi jnta hu tu kamjor nhi hai ... Bhut strong hai samajhdar hai.....
+Toh choti choti bato pe har n mana krr tu har manne wlo mei se nhi hai ... Aur jo bolti hai muhh tod dugi kbhi toh tod bss sunti hi hai .......
+And be strong kamjor nhi hai tu .. har n mana kr itni jldi.</p>
+    <p style="margin-top: 30px;">Scroll down to see your special birthday surprise!</p>
+    <div style="margin-top: 30px; font-size: 2em; animation: bounce 1s infinite alternate;">👇</div>
+  </section>
+
+  <!-- PHOTOS SECTION -->
+  <section id="photos">
+    <h1>📸 Mickey's Magical Moments</h1>
+    
+    <div class="audio-player">
+      <p style="font-weight: bold; margin-bottom: 10px; color: #ff1493;">🎵 song for you</p>
+      <audio controls style="width: 100%">
+        <source src="happy-birthday.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+    </div>
+
+    <div class="photo-section">
+      <!-- PHOTO 1 -->
+      <div class="photo-box">
+        <img src="photo1 .jpg" alt="Your Beautiful Photo 1">
+        <div class="photo-text">"Tere jaise dost ho toh kya baat hai,
+Har lamha tere sang ek khaas baat hai.
+Na zarurat hoti hai kisi mehfil ki,
+Teri muskaan hi meri poori baaraat hai.!"</div>
+      </div>
+      
+      <!-- PHOTO 2 -->
+      <div class="photo-box">
+        <img src="photo2 .jpg" alt="Your Beautiful Photo 2"> 
+        <div class="photo-text">"Sada muskurati hai jaise khushiyón ka raaz ho,
+Dosti mein bhi uska apna hi andaaz ho.masum hote hue 
+bhi karti hai dil pe raaj,
+Aisi dost ho toh zindagi lage khaas."</div>
+      </div>
+      
+      <!-- PHOTO 3 -->
+      <div class="photo-box">
+        <img src="photo3 .jpg" alt="Your Beautiful Photo 3">
+        <div class="photo-text">"Here you are, being your wonderful self - the reason everyone loves being around you!"</div>
+      </div>
+      
+      <!-- PHOTO 4 -->
+      <div class="photo-box">
+        <img src="photo4 .jpg" alt="Your Beautiful Photo 4">
+        <div class="photo-text">"Chandni raat mein bhi tu sabse roshan tulage,
+Adaayein teri jaise ki koi bhari mehfil lage 
+Tu ho jahan,saob kuch feekha sa lage 
+kyu ki inn ankho ko tere awla koi aur acha n lge!."</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WISHES SECTION -->
+  <section id="wishes">
+    <h1>💌 Magical Wishes for Mickey</h1>
+    
+    <div class="wish">
+      "May your year be as wonderful as a Disney fairytale! Wishing you endless happiness and a lots of adventures!" — ishu
+    </div>
+    
+    <div class="wish">
+      "happy birthday nancy ji ap humesha kush rhe a very very happy-birthday!" — komal
+    </div>
+    
+    <div class="wish">
+      "May your day be as bright as your smile, as lovely as your heart, and as special as you are.
+You are a blessing to everyone who knows you — a true example of kindness, grace, and pure joy.
+Wishing you endless happiness, success, and love.
+Keep shining and stay the amazing person you are!"
+With lots of love and good wishes!!" — me 
+    </div>
+    
+    <div class="wish">
+      "happy birthday nancy dont know ky bolu but happy happy birthday!" — kanchan
+    </div>
+  </section>
+
+  <!-- FINAL SECTION -->
+  <section id="mickey">
+    <h1 class="final">🎉 HAPPY BIRTHDAY MICKEY! 🎉</h1>
+    <img src="mickey-cartoon.png" alt="Mickey Mouse Cartoon" class="cartoon">
+    <p style="font-size: 1.5em; margin-top: 20px; max-width: 600px;">
+      Keep smiling and shining, little Mickey Mouse! May all your dreams come true this year! 🌟
+    </p>
+   
+    <div style="margin-top: 30px; display: flex; gap: 15px;">
+      <span style="font-size: 2em;">🎂</span>
+      <span style="font-size: 2em;">🎁</span>
+      <span style="font-size: 2em;">🎈</span>
+      <span style="font-size: 2em;">✨</span>
+    </div>
+  </section>
+<section>
+<div>
+      <div class="row">
+        <div class="col-md-3">
+          <video class="rounded" width="320" height="600" controls>
+  <source src="movie.mp4" type="video/mp4">
+  
+  Your browser does not support the video tag.
+</video>
+        
+  </section>
+  <footer>Made with ❤️ for mickey special Mickey-themed birthday</footer>
+
+  <script>
+    // Simple script to animate wishes one by one
+    document.addEventListener('DOMContentLoaded', function() {
+      const wishes = document.querySelectorAll('.wish');
+      wishes.forEach((wish, index) => {
+        wish.style.animationDelay = `${index * 0.3}s`;
+      });
+    });
+  </script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>
